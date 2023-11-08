@@ -4,22 +4,22 @@
   become: true 
   tasks:
 
-  - name: Install apache2 package
-    apt:
-      name: apache2
-    when: ansible_distribution == "Kali"
+  - name: Install apache and PHP package
+    package:
+      name:
+        - "{{apache_package}}"
+        - "{{php_package}}"
+      state: latest
+      #update_cache: true
+   
 
   - name: Start apache2 service 
     service:
-      name: apache2
+      name: "{{apache_package}}"
       state: started 
     when: ansible_distribution == "Kali"
 
-  - name: Add php support for apache2 
-    apt:
-      name: libapache2-mod-php
-      state: latest
-    when: ansible_distribution == "Kali"
+
 
   
 
