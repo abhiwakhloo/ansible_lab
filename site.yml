@@ -20,6 +20,19 @@
      owner: root 
      group: root 
      mode: 0644
+  
+  - name: install unzip package
+    package: 
+      name: unzip
+
+  - name: install terraform 
+    unarchive:
+      src: https://releases.hashicorp.com/terraform/1.6.3/terraform_1.6.3_linux_arm64.zip
+      dest: /usr/local/bin
+      remote_src: yes
+      mode: 0755
+      owner: root
+      group: root
 
   - name: Start apache2 service 
     service:
