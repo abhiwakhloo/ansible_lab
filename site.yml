@@ -1,0 +1,26 @@
+---
+
+- hosts: all
+  become: true 
+  tasks:
+
+  - name: Install apache and PHP package
+    package:
+      name:
+        - "{{apache_package}}"
+        - "{{php_package}}"
+      state: latest
+      #update_cache: true
+   
+
+  - name: Start apache2 service 
+    service:
+      name: "{{apache_package}}"
+      state: started 
+    when: ansible_distribution == "Kali"
+
+
+
+  
+
+    
