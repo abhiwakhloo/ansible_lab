@@ -11,7 +11,15 @@
         - "{{php_package}}"
       state: latest
       #update_cache: true
-   
+  
+  - name: copy default html file
+    tags: apache,apache2
+    copy:
+     src: default_site.html
+     dest: /var/www/html/index.html 
+     owner: root 
+     group: root 
+     mode: 0644
 
   - name: Start apache2 service 
     service:
