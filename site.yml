@@ -35,9 +35,11 @@
       group: root
 
   - name: Start apache2 service 
+    tags: services
     service:
       name: "{{apache_package}}"
       state: started 
+      #enabled: yes
     when: ansible_distribution == "Kali"
 
 
